@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yordam - Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            font-size: 20px;
+            margin-top: 15px;
+        }
+        .section p {
+            font-size: 16px;
+        }
+        .section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .section ul li {
+            margin-bottom: 10px;
+        }
+        .back-button {
+            margin-bottom: 20px;
+        }
+        .back-button a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-button a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Yordam Markazi</h1>
+        </div>
+
+        <div class="back-button">
+            <a href="{% url 'asosiy' %}">&larr; Asosiy sahifaga qaytish</a>
+        </div>
+
+        <div class="section">
+            <h2>Yordam Markaziga Xush Kelibsiz</h2>
+            <p>Bu yerda tez-tez so‘raladigan savollar va saytimizni qanday ishlatish bo‘yicha qo‘llanmalar mavjud.</p>
+        </div>
+
+        <div class="section">
+            <h2>Tez-tez So‘raladigan Savollar (FAQ)</h2>
+            <h3>1. Qanday qilib hisob ochaman?</h3>
+            <p>Hisob ochish uchun, bosh sahifada o‘ng yuqori burchakda joylashgan "Ro‘yxatdan o‘tish" tugmasini bosing va ro‘yxatdan o‘tish formasini to‘ldiring.</p>
+
+            <h3>2. Parolni qanday tiklash mumkin?</h3>
+            <p>Agar parolingizni unutgan bo‘lsangiz, kirish sahifasidagi "Parolni unutdingizmi?" havolasini bosing va parolni tiklash bo‘yicha ko‘rsatmalarga amal qiling.</p>
+
+            <h3>3. Profil ma'lumotlarimni qanday yangilayman?</h3>
+            <p>Hisobingizga kiring, profil sahifangizga o‘ting va "Profilni tahrirlash" tugmasini bosing, so‘ng ma'lumotlaringizni yangilang.</p>
+        </div>
+
+        <div class="section">
+            <h2>Boshqa Ma'lumotlar</h2>
+            <h3>1. Dashborddan qanday foydalanish kerak?</h3>
+            <p>Kirish qilingandan so‘ng, saytning turli bo‘limlariga yon panel menyusi orqali kirishingiz mumkin. Mavjud funksiyalar va resurslarni o‘rganing.</p>
+
+            <h3>2. Qidiruv funksiyasidan qanday foydalanish kerak?</h3>
+            <p>Yuqori qismda joylashgan qidiruv panelidan foydalanib, kurslar, maqolalar yoki boshqa kontentlarni tezda topishingiz mumkin. Kalit so‘zlarni kiriting va natijalarni ko‘rish uchun Enter tugmasini bosing.</p>
+        </div>
+
+        <div class="section">
+            <h2>Qo‘llab-quvvatlash bilan Bog‘lanish</h2>
+            <p>Agar qo‘shimcha yordamga muhtoj bo‘lsangiz, qo‘llab-quvvatlash jamoasi bilan bog‘laning:</p>
+            <ul>
+                <li>Email: jamshidbekxaminov17@gmail.com</li>
+                <li>Telefon: +998-77-125-34-04</li>
+                <li>Online Chat: Saytimizda mavjud</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

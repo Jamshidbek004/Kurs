@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O'quvchi Ma'lumotlarini O'zgartirish</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #343a40;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 10px;
+            display: block;
+            border: 4px solid #007bff;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+
+        .upload-btn-wrapper {
+            text-align: center;
+            position: relative;
+        }
+
+        .upload-btn-wrapper .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+        }
+
+        .upload-btn-wrapper input[type="file"] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 12px 0;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .back-link a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Qo'shimcha malumotni to'ldiring</h1>
+            <div class="upload-btn-wrapper">
+                <img src="{{ oquvchi.profile_picture.url }}" alt="Profile Picture" class="profile-pic" id="profilePicPreview">
+                <button type="button" class="btn">Rasmni yuklash</button>
+                <input type="file" name="profile_picture" id="profilePicInput" accept="image/*">
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_telraqam" class="form-label">Telefon raqam</label>
+                    <input type="text" id="id_telraqam" class="form-control" name="telraqam" value="{{ oquvchi.telraqam }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="id_bio" class="form-label">Bio (qisqacha sharh)</label>
+                    <textarea id="id_bio" class="form-control" name="bio" rows="3">{{ oquvchi.bio }}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="id_yonalish" class="form-label">Yonalish tanlang</label>
+                    <select id="id_yonalish" class="form-control" name="yonalish" required>
+                        {% for yonalish in yonalishlar %}
+                        <option value="{{ yonalish.id }}" {{yonalish.name}}>
+                            {{ yonalish.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">O'zgarishlarni saqlash</button>
+            </form>
+            <div class="back-link">
+                <a href="{% url 'asosiy' %}">← Profilga qaytish</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const profilePicInput = document.getElementById('profilePicInput');
+        const profilePicPreview = document.getElementById('profilePicPreview');
+
+        profilePicInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profilePicPreview.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+
+</html>
